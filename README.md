@@ -1,61 +1,49 @@
-# NFT Minting and Transfer Project
+Sure, here's the updated description of the NFT Minting and Transfer Project:
 
-This project involves the creation of an ERC-721 compliant NFT contract called "UNFTC" and the deployment of this contract on the Goerli test network. Subsequently, NFTs are minted using the contract, and a few of these NFTs are transferred from Goerli to the Mumbai test network. Finally, the balance of NFTs on the Mumbai test network is displayed.
+# Blockchain Interoperable NFT Minting and Transfer Project
 
-## Smart Contract
+This project aims to create an ERC-721 compliant NFT contract called "BIFNFT" (Blockchain Interoperable NFT) and deploy it on both the Goerli test network and the Mumbai test network. The smart contract, `BIFNFT.sol`, is written in Solidity and inherits from OpenZeppelin's ERC721 contract. It enables the minting of NFTs and stores metadata URIs for each token.
 
-The smart contract is written in Solidity and is named `UNFTC.sol`. The contract inherits from OpenZeppelin's ERC721 contract. The contract allows minting of NFTs and stores metadata URIs for each token. The contract also has a `mintNFT` function for minting new NFTs.
+## Contract Deployment
 
-## Deployment Script
+The deployment script, `deploy.js`, facilitates the deployment of the `BIFNFT` contract on both the Goerli and Mumbai test networks. The script makes use of Hardhat to deploy the contract and its dependencies to the respective networks.
 
-The deployment script is named `deploy.js`. It deploys the `UNFTC` contract to the Goerli test network.
+## NFT Minting
 
-## Minting NFTs Script
+The `batchMint.js` script is responsible for minting NFTs using the already deployed `BIFNFT` contract on the Goerli test network. This script allows users to mint multiple NFTs at once and associate metadata URIs with each token. The minted NFTs are unique and can represent various digital assets, art, or collectibles.
 
-The minting script is named `batchMint.js`. It mints NFTs using the deployed `UNFTC` contract and stores the metadata URIs for each token. This script is used to mint NFTs on the Goerli test network.
+## NFT Transfer between Networks
 
-## Transferring NFTs Script
+To demonstrate cross-chain interoperability, the `batchTransfer.js` script enables the transfer of NFTs from the Goerli test network to the Mumbai test network. This script leverages the `BIFNFT` contract on both networks and utilizes the Polygon Root Tunnel contract to facilitate the secure and efficient transfer of NFTs.
 
-The transferring script is named `batchTransfer.js`. It transfers NFTs from the Goerli test network to the Mumbai test network. This script utilizes the `UNFTC` contract and the Root Tunnel contract on the Mumbai network for the transfer.
+## Checking NFT Balance on Mumbai Test Network
 
-## Checking NFT Balance Script
-
-The balance script is named `balance.js`. It checks the NFT balance of a specified account on the Mumbai test network. The address and the contract address are specified in the `.env` file.
+The `balance.js` script provides a simple utility to check the NFT balance of a specified Ethereum account on the Mumbai test network. The address and the contract address are specified in the `.env` file, and the script queries the blockchain to retrieve the account's NFT balance.
 
 ## Setup and Execution
 
-1. Make sure to have Hardhat configured and set up the environment variables in the `.env` file.
+To begin the project:
 
-2. To deploy the contract, execute the `deploy.js` script using Hardhat:
+1. Install Hardhat and set up the required environment variables in the `.env` file.
 
-```
+2. Deploy the `BIFNFT` contract using the `deploy.js` script:
+
+bash
 npx hardhat run scripts/deploy.js --network goerli
-```
 
-3. Mint NFTs using the `batchMint.js` script:
+3. Mint NFTs on the Goerli test network using the `batchMint.js` script:
 
-```
+bash
 npx hardhat run scripts/batchMint.js --network goerli
-```
 
-4. Transfer NFTs using the `batchTransfer.js` script:
+4. Transfer the NFTs from Goerli to Mumbai test network using the `batchTransfer.js` script:
 
-```
+bash
 npx hardhat run scripts/batchTransfer.js --network goerli
-```
 
-5. Check the NFT balance on the Mumbai test network using the `balance.js` script:
-
-```
+5. Finally, check the NFT balance on the Mumbai test network using the `balance.js` script:
+bash
 npx hardhat run scripts/balance.js --network mumbai
-```
 
-Feel free to customize and modify the scripts as needed for your specific use case.
 
-## Authors
-
-- [Umar Khan](https://github.com/UmarKhan19)
-
-## License
-
-This code is released under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.
+Please note that the project demonstrates cross-chain NFT transfer using Hardhat and the Polygon network, providing an example of blockchain interoperability for NFTs. The project is open-source and can be customized and modified according to specific requirements. The source code is available on GitHub under the MIT License, allowing users to freely use, modify, and distribute it.
